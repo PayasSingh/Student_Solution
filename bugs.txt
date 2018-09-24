@@ -1,0 +1,52 @@
+
+# CMPUT 229 Student Submission License
+# Version 1.0
+# Copyright 2018 Payas Singh
+#
+# Unauthorized redistribution is forbidden in all circumstances. Use of this
+# software without explicit authorization from the author or CMPUT 229
+# Teaching Staff is prohibited.
+#
+# This software was produced as a solution for an assignment in the course
+# CMPUT 229 - Computer Organization and Architecture I at the University of
+# Alberta, Canada. This solution is confidential and remains confidential 
+# after it is submitted for grading.
+#
+# Copying any part of this solution without including this copyright notice
+# is illegal.
+#
+# If any portion of this software is included in a solution submitted for
+# grading at an educational institution, the submitter will be subject to
+# the sanctions for plagiarism at that institution.
+#
+# If this software is found in any public website or public repository, the
+# person finding it is kindly requested to immediately report, including 
+# the URL or other repository locating information, to the following email
+# address:
+#
+#          payas@ualberta.ca
+#
+#---------------------------------------------------------------
+# Assignment:           1
+# Due Date:             September 24, 2018
+# Name:                 Payas Singh
+# Unix ID:              
+# Lecture Section:      A1
+# Instructor:           Jose Amaral
+# Lab Section:          D05
+# Teaching Assistant:   Kristen Newbury
+# Collaborated with:    Debangana Ghosh
+#---------------------------------------------------------------
+
+Bugs found in lab1-broken.s
+
+1. Inside copyLoop, 'sw' (store word) was used instead of 'sb'(store byte). The previous line used load byte which means each value was only using 1 byte and hense, 'sb' shuld be used instead of 'sw'.
+
+2. Inside checkLoop, the "beq $t0 $t1 notPalindrome" instructs the assembler to go into the notPalindrome subroutine if $t0 and $t1 have the same values. This is wrong because if the two registers have the same value then they should go into a subroutine which prints "This is a Palindrome" using yesPal instead of going into the subroutine notPalindrome.
+
+3. Inside label done, th result is printed but there is no instruction to exit the program. 
+
+	li $v0 10
+	syscall 
+
+	adding these instructions after the print instruction will terminate the program.

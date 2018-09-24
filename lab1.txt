@@ -1,0 +1,120 @@
+#
+# CMPUT 229 Student Submission License
+# Version 1.0
+# Copyright 2018 Payas Singh
+#
+# Unauthorized redistribution is forbidden in all circumstances. Use of this
+# software without explicit authorization from the author or CMPUT 229
+# Teaching Staff is prohibited.
+#
+# This software was produced as a solution for an assignment in the course
+# CMPUT 229 - Computer Organization and Architecture I at the University of
+# Alberta, Canada. This solution is confidential and remains confidential 
+# after it is submitted for grading.
+#
+# Copying any part of this solution without including this copyright notice
+# is illegal.
+#
+# If any portion of this software is included in a solution submitted for
+# grading at an educational institution, the submitter will be subject to
+# the sanctions for plagiarism at that institution.
+#
+# If this software is found in any public website or public repository, the
+# person finding it is kindly requested to immediately report, including 
+# the URL or other repository locating information, to the following email
+# address:
+#
+#          payas@ualberta.ca
+#
+#---------------------------------------------------------------
+# Assignment:           1
+# Due Date:             September 24, 2018
+# Name:                 Payas Singh
+# Unix ID:              
+# Lecture Section:      A1
+# Instructor:           Jose Amaral
+# Lab Section:          D05
+# Teaching Assistant:   Kristen Newbury
+# Collaborated with:    Debangana Ghosh
+#---------------------------------------------------------------
+
+
+1. "hello mips"
+
+2. 0x10010016
+
+3. 0x0040003c
+
+4. lb: executed 11 times, 0x82090000
+   sb: executed 11 times, 0xA2290000
+
+5. 0x00 -- 0x1001000A 
+   0x73 -- 0x10010009 
+   0x70 -- 0x10010008
+   0x69 -- 0x10010007 
+   0x6d -- 0x10010006 
+   0x20 -- 0x10010005 
+   0x6f -- 0x10010004 
+   0x6c -- 0x10010003 
+   0x6c -- 0x10010002 
+   0x65 -- 0x10010001 
+   0x68 -- 0x10010000 
+
+6.  HEX --- ASCII
+	
+	00		NUL(null)
+	24		$
+	08		BS (Backspace)
+	21		!
+
+7.  HEX --- Binary
+
+	0x00    0000 0000
+	0x24    0001 1000
+	0x08    0000 1000
+	0x21    0001 0101
+
+8. .word 76, -5, 23, 5 
+		- .word allocates 32 bits t0 the values passed in the memory adn stores these values consecutively.
+		- 76, -5, 23 will each take up4 bytes in memory and will be stored in a consecutive order.
+
+	.asciiz "Hello"
+	    - .asciiz will null terminate (adds '\0' at the end) the string "Hello" and store it in memory.
+	    - without null termination print_string syscall won't know ere the str ends and the system will print characters
+	      till it is terminated
+
+	    - "H"  -->  0x1001000
+	    - "e"  -->  0x1001001
+	    - "l"  -->  0x1001002
+	    - "l"  -->  0x1001003
+	    - "o"  -->  0x1001004
+	    - "\0" -->  0x1001005
+
+	.ascii "World"
+		- .ascii will store the str "World" in memory without terminating it. 
+
+		- "W"  -->  0x1001006
+		- "o"  -->  0x1001007
+		- "r"  -->  0x1001008
+		- "l"  -->  0x1001009
+		- "d"  -->  0x100100A
+
+	.align 2
+		- .align overrides the default alignment rules
+		- the next field after this directive will be aligned according to multiples of 2.
+		- 2^2 = 4 bytes
+
+	.space 5
+		- .space 5 instructs the assembler to reserve 5 bytes.
+
+	.byte 42, 'h', 'i'
+		- .byte stores the values 42, 'h' and 'i' consecutively.
+
+9. print $s1 
+
+10. The stack $a1 grows down. Use a loop (lets call it checkValue) and in the first line of the loop use the instrction bnez(Branch Not Equal to Zero) In the label of bnez add another subroutine which uses instruction addi to increment the value of a temporary register by 1 every time bnez is True. This subroutine should also include an instruction to increment the address store in $a0 by 4. At the end of this subroutine use the instruction "j checkValue". In the subroutine Checkvalue, after the bnez instruction, use an instruction to call the termination subroutine where another instruction needs to be added to print the value stored in the temporary register which was counting the values remaining in the stack.
+
+
+
+
+
